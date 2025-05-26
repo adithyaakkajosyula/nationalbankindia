@@ -1,0 +1,19 @@
+<p>parent works!</p>
+
+<button (click)="sendData()">change data from parent to child by service</button><br>
+<h3>Child To Parent data</h3>
+{{parentDatabychild}}
+<br>
+{{receivedatafromchild}}
+<br>
+{{datafromchildbyservice}}<br>
+{{childtemplaterefrence.senddatatoparentfortemplateref}}<br>
+{{getdatatoparentfortemplatereferencefromts}}<br>
+{{getdatatoparentfortemplatereferencefromtsbyviewchild}}<br>
+{{getcombinedtemplatereferenceandeventemitter}}
+<hr>
+<hr>
+<hr>
+
+<app-child #childtemplaterefrence (combinedDataChange)="handledatachangeforcombined($event)"  (dataChange)="handleDataChange($event)" [childdata]="parentData">This Content From Parent Component by Ng-Content</app-child>
+

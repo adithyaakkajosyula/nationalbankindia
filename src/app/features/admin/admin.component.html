@@ -1,0 +1,25 @@
+
+<mat-tab-group [selectedIndex]="selectedIndex" #tabgroup>
+  <ng-container *ngFor="let tab of tabs ; let i = index">
+    <mat-tab [disabled]="isSelected(i)"  [dataProvider]="tab">
+            <ng-template mat-tab-label>
+              <div class="mat-label-text">{{ tab.data.label + tabgroup.selectedIndex }}</div>
+            </ng-template>
+      
+      <div class="card mt-5">
+          <div class="card-body">
+            <ng-container *ngComponentOutlet="tab.component ;  inputs:{tab : tab,tabelement : tabgroup ,number:selectedIndex} ">       
+            </ng-container>
+          </div>
+      </div>
+      
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>
+
+
+
+
+
+
+

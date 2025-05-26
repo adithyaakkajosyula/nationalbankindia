@@ -1,0 +1,162 @@
+
+<div class="card px-2" style="overflow-x:hidden">
+<form [formGroup]="applicationaddressadd">
+  <div class="col-md-12">
+    <div class="row">
+      <input type="hidden" readonly formControlName="applicationaddid">
+      <div class="col-md-4 p-5">
+        <div class="card">
+          <div class="card-header">
+              <h1>Current Address</h1>
+          </div>
+          <div class="card-block p-5">
+            <ng-container formGroupName="currentaddress">
+              <div class="row"> 
+                <label>House No</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddhouseno">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddhouseno')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddhouseno')?.touched">Please Enter House Number</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Street Name and Line</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddstreetname">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddstreetname')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddstreetname')?.touched">Please Enter Street Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Colony/Area</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddcolonyorarea">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddcolonyorarea')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddcolonyorarea')?.touched">Please Enter Colony Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Landmark</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddlandmark">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddlandmark')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddlandmark')?.touched">Please Enter Lanmark Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Village/Town/City</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddvillagetownorcity">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddvillagetownorcity')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddvillagetownorcity')?.touched">Please Enter Village Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Mandal</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddmandal">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddmandal')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddmandal')?.touched">Please Enter Mandal Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>District</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationadddistrict">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationadddistrict')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationadddistrict')?.touched">Please Enter District Name</p>
+                </div>        
+              </div>
+              <div class="row"> 
+                <label>Pincode</label>
+                <div class="">
+                  <input type="text" class="form-control" formControlName="applicationaddpincode">
+                  <p class="text-danger" *ngIf="applicationaddressadd.get('currentaddress.applicationaddpincode')?.hasError('required') && applicationaddressadd.get('currentaddress.applicationaddpincode')?.touched">Please Enter Pincode</p>
+                </div>        
+              </div>
+            </ng-container>
+          </div>
+            
+            
+        </div>
+        
+      </div>
+      <div class="col-md-4 p-5">
+        <div class="card">
+            <div class="card-header">
+                <h1>Permanent Address</h1>
+                <input type="checkbox" formControlName="isSameAddressControl"> Same address for sending/billing
+            </div>
+            <div class="card-block p-5">
+              <ng-container formGroupName="permanentaddress">
+                <div class="row"> 
+                  <label>House No</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddhouseno">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddhouseno')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddhouseno')?.touched">Please Enter House No</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Street Name and Line</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddstreetname">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddstreetname')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddstreetname')?.touched">Please Enter Street Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Colony/Area</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddcolonyorarea">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddcolonyorarea')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddcolonyorarea')?.touched">Please Enter Colony Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Landmark</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddlandmark">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddlandmark')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddlandmark')?.touched">Please Enter Landmark Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Village/Town/City</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddvillagetownorcity">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddvillagetownorcity')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddvillagetownorcity')?.touched">Please Enter Village Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Mandal</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddmandal">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddmandal')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddmandal')?.touched">Please Enter Mandal Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>District</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationadddistrict">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationadddistrict')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationadddistrict')?.touched">Please Enter District Name</p>
+                  </div>        
+                </div>
+                <div class="row"> 
+                  <label>Pincode</label>
+                  <div class="">
+                    <input type="text" class="form-control" formControlName="permanentapplicationaddpincode">
+                    <p class="text-danger" *ngIf="applicationaddressadd.get('permanentaddress.permanentapplicationaddpincode')?.hasError('required') && applicationaddressadd.get('permanentaddress.permanentapplicationaddpincode')?.touched">Please Enter Pincode</p>
+                  </div>        
+                </div>
+              </ng-container>
+              
+            </div>
+        </div>
+        
+      </div>
+    </div> 
+  </div>
+
+<div class="row">
+  <div class="col-md-12 d-flex justify-content-between p-2">
+  <div class="text-end">
+  <button class="btn btn-primary" (click)="previoustab()">Previous</button>
+  </div>
+    <div class="float-right">
+      <button class="btn btn-primary" (click)="nexttab(applicationaddressadd)">Next</button>
+    </div>
+  </div>
+</div>
+
+</form>
+</div>

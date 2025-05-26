@@ -1,0 +1,23 @@
+
+<aside   [ngClass]="status ? 'sidebar open' : 'sidebar'">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item" *ngFor="let item of menuSidebar"  routerLinkActive="active">
+          <div *ngIf="item.sub_menu.length == 0">
+            <a [routerLink]="[item.link]"  class="nav-link menu-link collapsed">             
+              <span>{{item.link_name}}</span>
+            </a>
+          </div>
+          <div *ngIf="item.sub_menu.length > 0">
+            <a class="nav-link menu-link collapsed" #itemEl  (click)="showSubmenu(itemEl)">             
+                <span>{{item.link_name}}</span><i class="bi bi-chevron-down float-end"></i>
+            </a>
+            <ul class="nav-content collapse">
+                <li *ngFor="let item_sub of item.sub_menu" routerLinkActive="active">
+                  <a class="link" [routerLink]="[item_sub.link]">{{item_sub.link_name}}</a>
+                </li>
+            </ul>
+          </div>         
+        </li>
+      </ul>
+</aside>

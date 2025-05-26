@@ -1,0 +1,299 @@
+<p>test works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Data binding</h1>
+        <hr>
+        <hr>
+        <hr>
+        <h1>One way data binding</h1>
+
+        <h2>String Interpolation</h2>
+        <h4>{{gettext}}</h4>
+        
+        <h2>Property Binding</h2>
+        <div class="col-md-3">
+            <input type="text" [value]="inputvalue">       
+        </div>
+
+        <h2>Attribute Binding</h2>
+
+        <h2>Event Binding with Style Binding</h2>
+        <div class="col-md-3">
+            <input type="button" (click)="increment()" value="CLick">
+            <h3  [ngStyle]="{'color':'applycolor','font-weight':'bold','border':'5px solid black'}">{{count}}</h3>         
+        </div>
+
+        <h2>Class Binding</h2>
+        <h3 [class]="changecolor"><p class="text-primary"></p><br> {{gettext}}</h3>
+        <hr>
+        <hr>
+        <hr>
+        <h1>Two Way Data Binding Using Input</h1>
+    
+        <input type="text" (input)="displayurname($event)">
+        <label>{{myname}}</label>
+        <hr>
+        <hr>
+        <hr>
+        <h1>Two Way Data Binding using NgModel</h1>
+        <input type="text" [(ngModel)]="name">
+        <h3>{{name}}</h3>
+        <hr>
+        <hr>
+        <hr>
+        <h1>Directives</h1>
+        <hr>
+        <hr>
+        <hr>
+        <h1>Structural Directives</h1>
+        <hr>
+        <hr>
+        <hr>
+        <h2>ngIf and ngFor (only visible if visible in ts file is set to true)</h2>
+
+        <h2>It is based on a boolean value</h2>
+        <table *ngIf="visible; else rejected">
+                <tbody>
+                    <tr *ngFor="let m of leters">{{m}}
+                    
+                    </tr>
+                </tbody>
+        </table>
+        <ng-template #rejected>
+            <p>This text is displayed when Visible is false.</p>
+        </ng-template>
+    
+        <h2>It is based on a array empty and array length</h2>
+        <div class="col-md-3" *ngIf="fruits && fruits.length > 1; else notEnoughData">
+            <ul>
+              <li *ngFor="let fruit of fruits">{{ fruit }}</li>
+            </ul>
+        </div>
+          <ng-template #notEnoughData>
+            <h1>Not enough data</h1>
+          </ng-template>
+          <hr>
+          <hr>
+          <hr>
+        <h2>NGIF Then Else Concept</h2> 
+        <div *ngIf="fruits.length >=1; then loading; else errorblock ">
+        </div>
+        <ng-template #loading> 
+            <h1>data is loading...</h1>
+            <table border="1">
+                <tr >
+                    <td *ngFor="let m of fruits">{{m}}</td>
+                </tr>
+            </table>
+        </ng-template>
+        <ng-template #errorblock> 
+        <h1>Error Occured</h1>
+        </ng-template>
+        <hr>
+        <hr>
+        <hr>
+        <h2>ngSwitch (Caluculator example)</h2>
+        <div class="col-md-3">
+            First Number <input class="form-control" type="number" [(ngModel)]="firstvalue">
+            Second Number <input class="form-control" type="number" [(ngModel)]="secondvalue">
+        </div>
+        <div class="col-md-3">
+            <select class="form-select" [(ngModel)]="selectedvalue">
+                <option *ngFor="let m of operation" value="{{m}}">{{m}}</option>
+            </select>
+        </div>
+        <div [ngSwitch]="selectedvalue">
+            <div *ngSwitchCase="'+'">
+                <p>Final Output {{firstvalue + secondvalue}}</p>
+            </div>
+            <div *ngSwitchCase="'-'">
+                <p>Final Output {{firstvalue - secondvalue}}</p>
+            </div>
+            <div *ngSwitchCase="'*'">
+                <p>Final Output {{firstvalue * secondvalue}}</p>
+            </div>
+            <div *ngSwitchCase="'/'">
+                <p>Final Output {{firstvalue / secondvalue}}</p>
+            </div>
+            <div *ngSwitchDefault>
+                <p>No option selected or option not recognized.</p>
+              </div>
+        </div>
+        <hr>
+        <hr>
+        <hr>
+        <h1>Attribute Directives</h1>
+        <h2>ngCLass Using an Object</h2>
+        <div>
+            <input [ngClass]="{'bg-danger':isActive,'disabled':isDisabled}" value="This is get ngCLass Using an Object">
+        </div>
+        
+        <h2>ngCLass Using an Array</h2>
+        <div>
+            <input [ngClass]="['bg-danger','readonly']" value="This is get ngCLass Using an Array">
+        </div>
+    
+        <h2>ngClass Using a string</h2>
+        <div [ngClass]="currentClass">
+            This div will have the class specified by the currentClass variable.
+        </div>
+    
+        <h2>ngClass Using a Combined Usage</h2>
+        <div [ngClass]="{'active': isActive, 'class1 class2': true, 'another-class': true}">
+            This div has a complex ngClass binding.
+        </div>
+    
+        <h2>ngClass Using a Dynamic Class Binding with Angular</h2>
+        <button [ngClass]="{ 'btn': true,'btn-info': isPrimary, 'btn-secondary': !isPrimary}" (click)="toggleButtonStyle()">
+            Click Me
+        </button>
+        <!-- Here multiple classes like btn btn-peimary will not handle by ngClass so for all conditions btn must be true -->
+    
+    <button class="btn btn-danger" value="save">Button</button>
+    <hr>
+    <hr>
+    <hr>
+    <h1>Pipes</h1>
+
+    <h1>Built in Pipes </h1>
+    <hr>
+    <hr>
+    <hr>
+    <h2>Date Pipe</h2>
+    
+
+
+    <h2>Change Date Formats in htmlpage or Template</h2>
+    <div class="col-md-3">
+        <input [(ngModel)]="testdateinhtml" class="form-control">
+    </div>
+    <p>{{ testdateinhtml | parsedate | date}}</p>
+    short<p>{{ testdateinhtml | parsedate | date: 'short' }}</p>
+    Full Date<p>{{ testdateinhtml | parsedate | date: 'full' }}</p>
+    medium<p>{{ testdateinhtml | parsedate | date: 'medium' }}</p>
+    long<p>{{ testdateinhtml | parsedate | date: 'long' }}</p>
+    shortDate<p>{{ testdateinhtml | parsedate | date: 'shortDate' }}</p>
+    mediumDate<p>{{ testdateinhtml | parsedate | date: 'mediumDate' }}</p>
+    longDate<p>{{ testdateinhtml | parsedate | date: 'longDate' }}</p>
+    fullDate<p>{{ testdateinhtml | parsedate | date: 'fullDate' }}</p>
+    shortTime<p>{{ testdateinhtml | parsedate | date: 'shortTime' }}</p>
+    mediumTime<p>{{ testdateinhtml | parsedate | date: 'mediumTime' }}</p>
+    longTime<p>{{ testdateinhtml | parsedate | date: 'longTime' }}</p>
+    fullTime<p>{{ testdateinhtml | parsedate | date: 'fullTime' }}</p>
+
+    <h2>Change Date Format in Ts file or Component Code</h2>
+    <div class="input-group">
+        <div class="col-md-3">
+          <input [(ngModel)]="testdateints" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-primary" (click)="getformatteddatestring($event)">To get Formatted Date</button>
+        </div>
+        <div class="col-md-3">
+          <h3>{{gettestdateints}}</h3>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <h2>Currency Pipe</h2>
+
+    <h2>Using In Template</h2>
+    <p>{{ 100 | currency }}</p>   
+    <!-- Currency With Code -->
+    <p>{{ 100 | currency:'USD' }}</p>
+    <!-- Currency With Symbol if true else code will come -->
+    <p>{{ 100 | currency:'EUR':true }}</p>
+    <!-- Here only symbol will come -->
+    <p>{{ 100 | currency:'CAD':'symbol' }}</p>
+    <!-- For some scenerious to get only symbol -->
+    <p>{{ 100 | currency:'CAD':'symbol-narrow' }}</p>
+    <!-- Here Only Symbol Will come -->
+    <p>{{ 100 | currency:'USD':'code':'1.2-2' }}</p>
+
+    <h2>Using In Component i.e., Ts File </h2>
+        {{formattedAmount}}
+        <hr>
+    <hr>
+    <hr>
+    <h2>UpperCasePipe in Template</h2>
+
+        {{'adithya'|uppercase}} 
+
+    <h2>UpperCasePipe in Component</h2>
+
+        {{uppercasetest}}
+        <hr>
+    <hr>
+    <hr>
+    <h2>LowecasePipe in Template</h2>
+
+        {{'ADITHYA'|lowercase}}
+    
+    <h2>LowerCase Pipe in Component</h2>
+
+        {{lowercasetest}}
+
+        <hr>
+        <hr>
+        <hr>
+    <h2>DecimalPipe in Template</h2>
+
+        {{12345.69898|number:'1.2-3'}}
+    <h2>DecimalPipe in Component</h2>
+
+        {{decimalnumbertest}}
+    <hr>
+    <hr>
+    <hr>
+    <h2>PercentPipe in Template</h2>
+        {{0.35 | percent}}
+    
+    <h2>PercentPipe in Component</h2>
+        {{percentnumbertest}}
+    
+    <hr>
+    <hr>
+    <hr>
+    <h2>JsonPipe in Template</h2>
+        <pre>{{myObject | json}}</pre>
+    <h2>JsonPipe in Component</h2>
+    <pre>{{jsonstringfromobject}}</pre>
+    <hr>
+    <hr>
+    <hr>
+    <h2>Slice Pipe</h2>
+    <h3>First 3 Items:</h3>
+    {{"adithya"|slice:0:3}}
+    <h3>Items from Index 2 to End:</h3>
+    {{"adithya"|slice:2}}
+    <hr>
+    <hr>
+    <hr>
+    <h2>Chaining in pipes</h2>
+    {{ 'hello world' | uppercase | slice:0:5 }} 
+
+
+    <p>Click or press keys on this component!</p>
+
+    <hr>
+    <hr>
+    <hr>
+    <h1>Dependency injection tokens</h1>
+    <h2>String-based Tokens</h2>
+    {{getstringbasedtoken}}
+
+    <h2>Injection Token</h2>
+    {{getinjectionbasedtoken}}
+    </div>
+
+    <h2>Injectiontoken In Object format</h2>
+    {{getinjectionbasedtokeninobject | json}}
+
+    <hr>
+    <hr>
+    <hr>
+    <h1>Routing and Navigation</h1>
+
+    <a [routerLink]="['/parent']">Parent Component</a>
+</div>

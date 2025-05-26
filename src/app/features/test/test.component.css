@@ -1,0 +1,11 @@
+.disabled {
+    background-color: #e9ecef; /* Light gray background for disabled elements */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    opacity: 0.65; /* Optional: make the element slightly transparent */
+  }
+  .class1 {
+    font-size: 20px;
+  }
+  .class2 {
+    border: 1px solid black;
+  }

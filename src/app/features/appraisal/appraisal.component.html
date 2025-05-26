@@ -1,0 +1,191 @@
+<p>appraisal works!</p>
+<div class="card">
+<div class="card-block">
+  <div class="card-header">
+    Appraisal  
+    </div>  
+  <div class="card-body">
+    <form action="" [formGroup]="appraisaladd" (ngSubmit)="onSubmit()">
+      <div class="card">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div class="col-md-6 offset-md-3">
+                <div class="form-group">
+                    Application Name:
+                    <input type="text" class="form-control" formControlName="applicationname">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationname')?.hasError('required')">Please Enter Name</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationname')?.hasError('minlength')">length must be 4</p>
+                
+                </div>
+                <div class="form-group">
+                  Application Father Name:
+                    <input type="text" class="form-control" formControlName="applicationfathername">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationfathername')?.hasError('required')">Please Enter Father Name</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationfathername')?.hasError('minlength')">length must be 4</p>
+                </div>
+                <div class="form-group">
+                  ApplicationMother Name
+                    <input type="text" class="form-control" formControlName="applicationmothername">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationmothername')?.hasError('required')">Please Enter Mother Name</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationmothername')?.hasError('minlength')">length must be 4</p>
+                </div>
+                <div class="row">
+                  Choose a date
+                  <input class="form-control col-md-5" readonly formControlName="applicationdob"  matInput [matDatepicker]="applicationdob">
+                  <div class="col-md-1">
+                    <mat-datepicker-toggle matIconSuffix [for]="applicationdob"></mat-datepicker-toggle>
+                    <mat-datepicker #applicationdob></mat-datepicker>
+                  </div>
+                  <p class="text-danger" *ngIf="appraisaladd.get('applicationdob')?.hasError('required')">Please Select Date</p>
+                </div>
+                <div class="form-group">
+                  Application Gender
+                  <label>
+                    <input type="radio" value="Male" formControlName="applicationgender">
+                      <span> Male </span>
+                  </label>
+                  <label>
+                    <input type="radio" value="Female" formControlName="applicationgender">
+                      <span> Female </span>
+                  </label>
+                  <p class="text-danger" *ngIf="appraisaladd.get('applicationgender')?.hasError('required')">Please Select Gender</p>
+                </div>
+                <div class="form-group">
+                  Application Qualification
+                    <select class="form-select" formControlName="applicationqualification">
+                      <option value="" >Select</option>
+                      <option *ngFor="let obj of applicationqualification" [ngValue]="obj.id">{{obj.qualification}}</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationqualification')?.hasError('required')">Please Select Qualification</p>
+                </div>
+                <div class="form-group">
+                  Application Martial Status
+                    <select class="form-select" formControlName="applicationmartialstatus">
+                      <option value="">Select</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationmartialstatus')?.hasError('required')">Please Select Martial Status</p>
+                </div>
+                <div class="form-group">
+                  Application Mobile
+                    <input type="text" class="form-control" formControlName="applicationmobile">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationmobile')?.hasError('required')">Please Enter Mobile</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationmobile')?.hasError('pattern')">Mobile Number is not valid</p>
+                </div>
+                <div class="form-group">
+                  Application Email
+                    <input type="text" class="form-control" formControlName="applicationemail">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationemail')?.hasError('required')">Please Enter Email</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationemail')?.hasError('pattern')"> Email Not Valid</p>
+                </div>
+                <div class="form-group">
+                  Application Dcument Types
+                    <select class="form-select" formControlName="applicationdocumenttypeId">
+                      <option value="" >Select</option>
+                      <option *ngFor="let obj of applicationdocumenttypeId" [ngValue]="obj.id">{{obj.documenttype}}</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationdocumenttypeId')?.hasError('required')">Please Select Document</p>
+                </div>
+                <div class="form-group">
+                  Application Requested Amount
+                    <input type="text" class="form-control" formControlName="applicationRequestedAmount">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationRequestedAmount')?.hasError('required')">Please Enter Requested Amount</p>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationRequestedAmount')?.hasError('pattern')"> Requested Amount Not valid </p>
+                </div>
+                <div class="form-group">
+                  Application Hobbies                         
+                  <p-listbox
+                  formControlName="applicationHobbies"
+                  [(ngModel)]="selectedItems"
+                  [options]="items"
+                  [selectAll]="selectAll"
+                  optionLabel="hobbietype"
+                  [style]="{ width: '15rem' }"
+                  [virtualScroll]="true"
+                  [filter]="true"
+                  [virtualScrollItemSize]="43"
+                  [multiple]="true"
+                  [checkbox]="true"
+                  [showToggleAll]="false"
+                  [metaKeySelection]="false"
+                  [showToggleAll]="true"
+                  (onSelectAllChange)="onSelectAllChange($event)"
+                  (onChange)="onChange($event)"
+                  [listStyle]="{ 'max-height': '220px' }"
+              ></p-listbox>
+              <p class="text-danger" *ngIf="appraisaladd.get('applicationHobbies')?.hasError('required')">Please Select Hobbies</p>
+                </div>
+                <div class="form-group">
+                  Application Register Date
+                    <input class="form-control col-md-5"   readonly formControlName="applicationRegisterdate"  matInput [matDatepicker]="applicationRegisterdate">
+                    <div class="col-md-1">
+                      <mat-datepicker-toggle matIconSuffix [for]="applicationRegisterdate"></mat-datepicker-toggle>
+                      <mat-datepicker #applicationRegisterdate></mat-datepicker>
+                    </div>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationRegisterdate')?.hasError('required')">Please Select Register Date</p>              
+                </div>
+                <div class="form-group">
+                  Application Address
+                    <textarea type="text" class="form-control" formControlName="applicationAddress"></textarea>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationAddress')?.hasError('required')">Please Enter Address</p>          
+                </div>
+                <div class="form-group">
+                  Application Country
+                    <select class="form-select" formControlName="applicationCountryId" (ngModelChange)="getstates($event)">
+                      <option value="">Select</option>
+                      <option *ngFor="let obj of applicationCountryTypes" [ngValue]="obj.id">{{obj.name}}</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationCountryId')?.hasError('required')">Please Select Country</p>  
+                </div>
+                <div class="form-group">
+                  Application State
+                    <select class="form-select" formControlName="applicationStateId" (ngModelChange)="getdistricts($event)">
+                      <option value="">Select</option>
+                      <option *ngFor="let obj of applicationStateTypes" [ngValue]="obj.id">{{obj.name}}</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationStateId')?.hasError('required')">Please Select State</p> 
+                </div>
+                <div class="form-group">
+                  Application District
+                    <select class="form-select" formControlName="applicationDistrictId">
+                      <option value="">Select</option>
+                      <option *ngFor="let obj of applicationDistrictTypes" [ngValue]="obj.id">{{obj.name}}</option>
+                    </select>
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationDistrictId')?.hasError('required')">Please Select District</p> 
+                </div>
+                
+                
+                <div class="form-group">
+                  Application Document
+
+                    <input type="file" accept="image/*" formControlName="documentFile" (change)="showPreview($event)" />
+                    <!-- Image Preview -->
+                    <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                      <img [src]="imageURL" class="image-responsive" [alt]="appraisaladd.value.applicationname">
+                    </div>
+                    <p class="text-danger" *ngIf="appraisaladd.get('documentFile')?.hasError('required')">Please Upload Document</p> 
+                </div>
+                <div class="form-group">
+                  Accept Terms & Conditions
+                    <input type="checkbox" class="form-check-input" formControlName="applicationIsAcceptedTermsandConditions">
+                    <p class="text-danger" *ngIf="appraisaladd.get('applicationIsAcceptedTermsandConditions')?.hasError('required')">Please Approve Terms and Conditions</p> 
+                </div>
+
+                <div>
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+        </div>
+            </div>
+                  
+              </div>
+      </div>
+      
+  </form>
+  
+  </div>
+</div>
+</div>

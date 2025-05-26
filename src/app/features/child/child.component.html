@@ -1,0 +1,14 @@
+<p>child works!</p>
+<button (click)="changeData()">Send Data to Parent by event emitter</button><br>
+<button (click)="sendData()">change data from child to parent by service</button><br>
+<button (click)="changeDataforcombined()">change data from child to parent by Combined</button><br>
+<h3>Parent To Child data</h3>
+
+
+{{childdata}}<br>
+{{childdatabyViewChild}}
+<br>
+<ng-content></ng-content>
+<br>
+{{datafromparentbyservice}}
+

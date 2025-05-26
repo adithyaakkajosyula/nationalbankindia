@@ -1,0 +1,12 @@
+<ng-template #idleModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Session Idle</h5>
+      <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>You have been idle for a while. Please click "Stay Active" to continue your session.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="stayActive()">Stay Active</button>
+    </div>
+  </ng-template>

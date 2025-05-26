@@ -1,0 +1,126 @@
+<div style="overflow-x:hidden" class="pt-5">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+      <h1>Application</h1>
+  </div>
+  <hr>
+  <form [formGroup]="applicationadd">   
+      <div>
+        <div class="col-md-12">
+          <div class="col-md-4 offset-md-5">          
+              <mat-form-field>
+                <input type="text" placeholder="search applications" aria-label="Assignee" matInput  [matAutocomplete]="auto"  [formControl]="stateCtrl">
+                <mat-autocomplete class="auto-dropdown" #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of getappraisals | async" [disabled]="option.id == 0 ? true:false" [value]="option.name" (onSelectionChange)="onseleteditem(option)">
+                    {{ option.name }}
+                  </mat-option>
+                  <!-- <mat-option *ngFor="let option of getappraisals | async" disabled="{{ option.id == 0 ? true:false}}"  [value]="option.name +' - ['+ option.id + ']'"  (onSelectionChange)="onseleteditem(option)" >
+                    {{ option.name }}
+                  </mat-option> -->
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+      </div>
+      <div [hidden]="isActive">
+        <div class="card-header fw-bold text-white" style="background-color: #00AA9E;">Applicant Details</div>
+        <div class="h-100 d-flex align-items-center justify-content-center mt-5">          
+          <!-- Image Preview -->
+          <div class="imagePreview" *ngIf="imageURL != null && imageURL !== '' ;else other_content">
+            <img #selectedimage width="150px" height="150px" [src]="imageURL" class="image-responsive">
+          </div>
+          <ng-template #other_content>
+            <img width="150px" height="150px"  class="image-responsive" alt="Please Select a image"> 
+          </ng-template>        
+        </div>
+        <div class="h-100 d-flex align-items-center justify-content-center pt-2">
+          <button type="button"  (click)="fileInput.value='';fileInput.click()"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Select from computer." aria-label="Select from computer."><i class="bi bi-upload"></i></button>
+          <input #fileInput type="file" accept="image/*" formControlName="documentFile" (change)="showPreview($event)"  style="display:none;" />
+          <button class="m-2"><i class="bi bi-camera"></i></button>
+          <button (click)="resetimage()" class="m-2"><i class="bi bi-trash"></i></button>
+        </div>
+        <div class="col-md-12 pb-5">
+          <div class="row">
+                <div class="col-md-4">
+                Name
+                <input class="form-control" type="text" formControlName="applicationname">
+                <p class="text-danger" *ngIf="applicationadd.get('applicationname')?.hasError('required')  && applicationadd.get('applicationname')?.touched">Please Enter Name</p>
+            </div>
+            <div class="col-md-4">
+                Mobile Number
+                <input type="text" class="form-control" formControlName="applicationnumber">
+                <p class="text-danger" *ngIf="applicationadd.get('applicationnumber')?.hasError('required') && applicationadd.get('applicationnumber')?.touched">Please Enter Mobile Number</p>
+                <p class="text-danger" *ngIf="applicationadd.get('applicationnumber')?.hasError('pattern')">Mobile Number is not valid</p>
+            </div>
+            <div class="col-md-4">
+                Age
+                <input type="text" class="form-control" formControlName="applicationage">
+                <p class="text-danger" *ngIf="applicationadd.get('applicationage')?.hasError('required') && applicationadd.get('applicationage')?.touched">Please Enter Age</p>
+            </div>
+          </div>       
+        </div>
+
+        <div class="card-header fw-bold text-white" style="background-color: #00AA9E;">Kyc Details</div>
+        <div class="col-md-12">
+          <table  class="table table-hover table-bordered">         
+            <tr>
+              <th class="text-center" >
+              KYC Type
+            </th>
+            <th class="text-center" >
+              Document No
+            </th>
+            <th class="text-center" >
+            Is Address Proof
+            </th>
+            <th class="text-center" >
+            <button class="btn btn-link" (click)="addRow()">Add</button>
+            </th>              
+            </tr>             
+            <tbody formArrayName="kycdetails">
+            <tr class="text-center" *ngFor="let kyc of applicationadd.get('kycdetails')?.controls; let i = index" [formGroupName]="i">           
+                <td class="text-center">
+                  <select class="form-select"  [id]="'kyctype' + i"  [formControl]="kyc.get('kyctypevalue')"> 
+                  <option 
+                  [ngValue]="''" >
+                  Select
+                </option>
+                  <option *ngFor="let obj of kyctypesdata" [ngValue]="obj.id">{{obj.kyctype}}</option>
+                  </select>
+                  <div *ngIf="kyc.get('kyctypevalue').errors?.required && 
+                  kyc.get('kyctypevalue').touched" class="text-danger">
+                  Select Kyc Type
+                </div>
+                </td>
+                <td class="text-center">
+                <input type="text" class="form-control" [id]="'documentno' + i" placeholder="documentno"  [formControl]="kyc.get('documentno')">
+                <div *ngIf="kyc.get('documentno').errors?.required && 
+                kyc.get('documentno').touched" class="text-danger">
+                Documnet No is required
+              </div>
+                </td>
+                <td class="text-center" >
+                  <mat-slide-toggle [formControl]="kyc.get('isaddressproof')">
+                    <span *ngIf="kyc.get('isaddressproof').value">True</span>
+                    <span *ngIf="!kyc.get('isaddressproof').value">False</span>                  
+                  </mat-slide-toggle>
+                </td>
+                <td class="text-center">
+                <button class="btn btn-danger" type="button" (click)="deleteRow(i)"><i class="bi bi-trash"></i></button>
+                </td>
+          </tr>
+            </tbody> 
+          
+           
+          </table>
+        </div>
+
+        <div class="col-md-12 pt-5">
+                <div class="row">
+                  <div class="text-right">
+                    <button class="btn btn-primary float right" (click)="nexttab(applicationadd)">Next</button>
+                  </div>
+                </div>
+        </div>
+            </div>
+      </div>
+</form>
+</div>

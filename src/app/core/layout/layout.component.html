@@ -1,0 +1,27 @@
+<!-- <app-header *ngIf="authService.isAuthenticated() == true"></app-header>
+<app-sidebar *ngIf="authService.isAuthenticated() == true"></app-sidebar> -->
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<main  [ngClass]="status ? 'main open' : 'main'" style="background-color:lightgrey">
+    <nav class="d-flex">
+            <h5 class="card-title">Home Page</h5>
+            <ol class="breadcrumb ms-auto mt-2">
+                <li class="breadcrumb-item"><a>Home</a></li>
+                <li class="breadcrumb-item active "><a>DashBoard</a></li>
+            </ol>
+    </nav>
+    <hr>
+    <section class="section dashboard mb-5">
+        <div id="mainbody">
+           <router-outlet></router-outlet>
+        </div>
+    </section>
+           
+    <!-- @* <a href="#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>*@ -->
+</main>
+
+<footer class="border-top footer text-muted fixed-bottom">
+    <div class="container">
+        &copy; 2023 - AdithyaBank.FrontEnd - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+.not-authorized-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .not-authorized-container h1 {
+    color: #ff4d4d;
+  }
+  
+  .not-authorized-container p {
+    font-size: 18px;
+    margin: 20px 0;
+  }

@@ -1,0 +1,360 @@
+
+<form #application="ngForm" (ngSubmit)="onSubmit(application)">   
+    <div class="card">
+        <div class="card-header bg-primary d-flex align-items-center">
+            <h3 class="text-white m-0">Add Application</h3>
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row pt-5">
+                            <label class="col-md-4 text-md-end">Application Name</label>
+                            <div class="col-md-4">
+                                <input type="text" name="ApplicationName" [(ngModel)]="model.applicationName" class="form-control" required> 
+                                <p *ngIf="application.controls?.['ApplicationName']?.invalid && application.controls?.['ApplicationName']?.touched" class="text-danger">
+                                    Name is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Father Name</label>
+                            <div class="col-md-4">
+                                <input type="text" name="applicationFatherName" [(ngModel)]="model.applicationFatherName" class="form-control" required>
+                                <p *ngIf="application.controls?.['applicationFatherName']?.invalid && application.controls?.['applicationFatherName']?.touched" class="text-danger">Please Enter Father Name</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Mother Name</label>
+                            <div class="col-md-4">
+                                <input type="text" name="applicationMotherName" [(ngModel)]="model.applicationMotherName" class="form-control" required>
+                                <p *ngIf="application.controls?.['applicationMotherName']?.invalid && application.controls?.['applicationMotherName']?.touched" class="text-danger">Please Enter Mother Name</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Dob</label>
+                            <div class="col-md-4">
+                                <input class="form-control col-md-5" name="applicationDob" readonly [(ngModel)]="model.applicationDob"  matInput [matDatepicker]="applicationdob" required>
+                                <div class="col-md-1">
+                                    <mat-datepicker-toggle matIconSuffix [for]="applicationdob"></mat-datepicker-toggle>
+                                    <mat-datepicker #applicationdob></mat-datepicker>
+                                </div>
+                                <p *ngIf="application.controls?.['applicationDob']?.invalid && application.controls?.['applicationDob']?.touched" class="text-danger">Please Select DOB</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Gender</label>
+                            <div class="col-md-4">
+          
+                                    <input type="radio" name="applicationGender" [(ngModel)]="model.applicationGender" value="M" required> Male                          
+        
+                                    <input type="radio" name="applicationGender" [(ngModel)]="model.applicationGender" value="F"> Female
+                                    <p *ngIf="application.controls?.['applicationGender']?.invalid && application.controls?.['applicationGender']?.touched" class="text-danger">Please Select Application Gender</p>                     
+                            </div>
+                            
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Qualification</label>
+                            <div class="col-md-4">
+                                <select class="form-select" name="applicationQualification" [(ngModel)]="model.applicationQualification" required>
+                                    <option value="">Select</option>
+                                    <option  *ngFor="let option of qualifications" [value]="option.qualification">                               
+                                        {{option.qualification}}
+                                    </option>
+                                </select>
+                                <p *ngIf="application.controls?.['applicationQualification']?.invalid && application.controls?.['applicationQualification']?.touched" class="text-danger">Select Application Qualification</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application MartialStatus</label>
+                            <div class="col-md-4">
+                                <select class="form-select" name="applicationMartialStatus" [(ngModel)]="model.applicationMartialStatus" required>
+                                    <option value="">Select</option>
+                                    <option *ngFor="let status of martialstatusoptions"  [value]="status.value">
+                                        {{status.label}} 
+                                    </option>
+                                </select>
+                                <p *ngIf="application.controls['applicationMartialStatus']?.invalid && application.controls['applicationMartialStatus']?.touched" class="text-danger">Please Select Martial Status</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Mobile</label>
+                            <div class="col-md-4">
+                                <input class="form-control" type="number" name="applicationMobile" [(ngModel)]="model.applicationMobile" required>
+                                <p *ngIf="application.controls?.['applicationMobile']?.invalid && application.controls?.['applicationMobile']?.touched" class="text-danger">Please Enter Application Mobile Number</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Email</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="applicationEmail" [(ngModel)]="model.applicationEmail" required>
+                                <p *ngIf="application.controls?.['applicationEmail']?.invalid && application.controls?.['applicationEmail']?.touched" class="text-danger">Please Enter Email</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application RequestedAmount</label>
+                            <div class="col-md-4">
+                                <input class="form-control" [(ngModel)]="model.applicationRequestedAmount" name="applicationRequestedAmount" required>
+                                <p *ngIf="application.controls?.['applicationRequestedAmount']?.invalid && application.controls?.['applicationRequestedAmount'].touched" class="text-danger">Please Enter Application Requested Amount</p>
+                            </div>                  
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Hobbies</label>
+                            <div class="col-md-4">
+                                <p-listbox
+                                    name="applicationHobbies"
+                                    [(ngModel)]="model.applicationHobbies"
+                                    [options]="hobbies"
+                                    [selectAll]="selectAll"
+                                    optionLabel="hobbietype"
+                                    [style]="{ width: '15rem' }"
+                                    [virtualScroll]="true"
+                                    [filter]="true"
+                                    [virtualScrollItemSize]="43"
+                                    [multiple]="true"
+                                    [checkbox]="true"
+                                    [showToggleAll]="false"
+                                    [metaKeySelection]="false"
+                                    [showToggleAll]="true"
+                                    (onSelectAllChange)="onSelectAllChange($event)"
+                                    (onChange)="onChange($event)"
+                                    [listStyle]="{ 'max-height': '220px' }"
+                                    required
+                                    ></p-listbox>
+                                    <p *ngIf="application.controls?.['applicationHobbies']?.invalid && application.controls?.['applicationHobbies']?.touched" class="text-danger">Please Select Hobbies</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Application Register Date</label>                   
+                            <div class="col-md-4">
+                                <input class="form-control"   readonly [(ngModel)]="model.applicationRegisterDate" name="applicationRegisterDate"  matInput [matDatepicker]="applicationRegisterdate">
+                              <mat-datepicker-toggle matIconSuffix [for]="applicationRegisterdate"></mat-datepicker-toggle>
+                              <mat-datepicker #applicationRegisterdate></mat-datepicker>
+                              <p class="text-danger" *ngIf="application.controls?.['applicationRegisterDate']?.invalid && application.controls?.['applicationRegisterDate']?.touched">Please Select Date</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Address</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" [(ngModel)]="model.applicationAddress" name="applicationAddress" required></textarea>
+                                <p class="text-danger" *ngIf="application.controls?.['applicationAddress']?.invalid && application.controls?.['applicationAddress']?.touched">Please Enter Address</p>
+                            </div>
+                        </div>
+                        <!-- If the default value is 0 then validation is done in template only -->
+                        <!-- <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Countries</label>
+                            <div class="col-md-4">
+                                <select class="form-select" [(ngModel)]="model.applicationCountryId" name="applicationCountryId" (ngModelChange)="getStates($event)"   required >                                                                     
+                                    <option value="0">Select</option>
+                                    <option *ngFor="let option of countries" [value]="option.id">
+                                        {{ option.name }}
+                                    </option>
+                                </select>
+                                <p class="text-danger" *ngIf="application.controls?.['applicationCountryId']?.value == 0 && application.controls?.['applicationCountryId']?.touched">
+                                    Please select a valid country.
+                                </p>
+                            </div>
+                        </div> -->
+                        <!-- If the default value is 0 then validation is done by custome validate -->
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Countries</label>
+                            <div class="col-md-4">
+                                <select class="form-select" [(ngModel)]="model.applicationCountryId"  #countryField="ngModel" name="applicationCountryId" (ngModelChange)="getStates($event)" required appCustomValidator>
+                                    <option value="0">Select</option>
+                                    <option *ngFor="let option of countries" [value]="option.id">
+                                        {{ option.name }}
+                                    </option>
+                                </select>
+                                <!-- Show validation error -->
+                                <p *ngIf="countryField.invalid && countryField.touched" class="text-danger">
+                                    Please select a valid country.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">States</label>
+                            <div class="col-md-4">
+                                <select class="form-select" [(ngModel)]="model.applicationStateId" #stateField="ngModel" name="applicationStateId"  (ngModelChange)="getDistricts($event)" required appCustomValidator>
+                                    <option value="0">Select</option>
+                                    <option *ngFor="let option of states" [value]="option.id">
+                                        {{option.name}}
+                                    </option>
+                                </select>
+                                <!-- Show validation error -->
+                                <p *ngIf="stateField.invalid && stateField.touched" class="text-danger">
+                                    Please select a valid state.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">Districts</label>
+                            <div class="col-md-4">
+                                <select class="form-select" [(ngModel)]="model.applicationDistrictId" #districtField="ngModel"  name="applicationDistrictId" required appCustomValidator>
+                                    <option value="0">Select</option>
+                                    <option *ngFor="let option of districts" [value]="option.id">
+                                        {{option.name}}
+                                    </option>
+                                </select>
+                                <p *ngIf="districtField.invalid && districtField.touched" class="text-danger">
+                                    Please select a valid district.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row pt-3" *ngIf="model.applicationQualification === 'SSC'">
+                            <label class="col-md-4 text-md-end">Application Document Type</label>
+                            <div class="col-md-4">
+                                <select class="form-select" name="applicationDocumentTypeId" [(ngModel)]="model.applicationDocumentTypeId" required>
+                                    <option value=0>Select</option>
+                                    <option *ngFor="let document of documents" [value]="document.id">{{document.documenttype}}</option>
+                                </select>
+                                <p *ngIf="application.controls?.['applicationDocumentTypeId']?.value === 0 && application.controls?.['applicationDocumentTypeId']?.touched" class="text-danger">Please Select ApplicationDocumnet Type</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3" *ngIf="model.applicationQualification === 'SSC'">
+                            <label class="col-md-4 text-md-end">File</label>
+                            <div class="col-md-4">
+                                <input type="file" [(ngModel)]="model.documentFile" (change)="onFileSelected($event)"  name="documentFile" class="form-control" required>
+                                <p class="text-danger" *ngIf="application.controls?.['documentFile']?.invalid && application.controls?.['documentFile']?.touched">Please Upload File</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <label class="col-md-4 text-md-end">I Accept</label>
+                            <div class="col-md-4">
+                                <input type="checkbox" class="form-check" [(ngModel)]="model.applicationIsAcceptedTermsAndConditions"  name="applicationIsAcceptedTermsAndConditions" required>
+                                <p class="text-danger" *ngIf="application.controls?.['applicationIsAcceptedTermsAndConditions']?.invalid && application.controls?.['applicationIsAcceptedTermsAndConditions'].touched">Please Accept Terms and Conditions</p>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="float-end">
+                            <div style="height: 420px; width: 300px; display: flex; justify-content: center; align-items: center;  position: relative; overflow: hidden;">
+                                <div class="inner" 
+                                    style="border-width: 1px; border-style: solid; height: 400px; width: 300px; display: flex; justify-content: center; align-items: center; position: absolute; transition: right 1s ease-in-out; "
+                                    [ngStyle]="{ 'right': slideleft }">
+                                
+                                    <!-- <div class="d-flex justify-content-between mt-2">
+                                        <span>Form Controls:</span>
+                                        <span>{{ application.controls | safeJson }}</span>
+                                    </div>  -->
+                                    <table>
+                                        <thead><th><h5 class="mt-4"><strong>Form-Level Properties</strong></h5></th></thead>                                                        
+                                        <tbody>
+                                            <tr>
+                                                <td>Form Value:</td>
+                                                <td>{{ application.value }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Form Status:</td>
+                                                <td>{{ application.status }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Form Validity:</td>
+                                                <td>{{ application.valid }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Form Touched:</td>
+                                                <td>{{ application.touched }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> <h5><strong>Application Name Properties</strong></h5></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Value Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.value }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Touched Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.touched }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Untouched Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.untouched }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dirty Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.dirty }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pristine Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.pristine }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Valid Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.valid }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Errors Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.errors | json }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status Property:</td>
+                                                <td>{{ application.controls?.['ApplicationName']?.status }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <button style="height: 25px; width: 15px; position: relative; margin: 0; border: none; bottom: 225px; left: 300px; display: flex; align-items: center; justify-content: center; padding: 0; background-color: skyblue;" type="button" 
+                            (click)="togglediv()">
+                            <i class="{{ iconClass }}" style="font-size: 100%;"></i>
+                            </button>
+                       </div>
+                    </div>
+                   
+                </div>
+            </div>
+           
+                
+        </div>
+        <div class="card-header bg-primary d-flex align-items-center">
+            <h3 class="text-white m-0">Application List</h3>
+        </div>
+        <div class="card-body"> 
+            <h2>Application List</h2>
+            <table  class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th style="display: none;"></th>
+                        <th>Application Name</th>
+                        <th>Application Father Name</th>
+                        <th>Application Mother Name</th>
+                        <th>Application DOB</th>
+                        <th>Application Gender</th>
+                        <th>Application Qualification</th>
+                        <th>Application Mobile Number</th>
+                        <th>Application Email</th>
+                        <th>Application Rquested Amount</th>
+                        <th style="width: 100px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr  *ngFor="let application of applications; let i = index">
+                            <td style="display: none;">{{ application.id }}</td>
+                            <td>{{ application.applicationName }}</td>
+                            <td>{{ application.applicationFatherName }}</td>
+                            <td>{{ application.applicationMotherName }}</td>
+                            <td>{{ application.applicationDob | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ application.applicationGender === 'M' ? 'Male' : 'Female' }}</td>
+                            <td>{{ application.applicationQualification }}</td>
+                            <td>{{ application.applicationMartialStatus }}</td>
+                            <td>{{ application.applicationMobile }}</td>
+                            <td>{{ application.applicationEmail }}</td>
+                            <td  class="text-end"> ₹{{ application.applicationRequestedAmount }}</td>
+                            <td><button type="button" (click)="onEdit(application.id)"><i class="bi bi-pencil-fill"></i></button>
+                            <button type="button" class="ms-2"><i class="bi bi-trash-fill text-danger"></i></button></td>
+                        </tr>                  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+    <!-- <div>
+        <input type="text" ngModel name="applicationName">{{application.controls['applicationName']?.value}} 
+        <button type="button" (click)="window.alert(application.controls['applicationName']?.value)">Click</button>
+    </div> -->
