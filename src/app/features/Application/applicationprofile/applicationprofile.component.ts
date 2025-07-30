@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { DataProviderDirective } from '../../../../../../AdithyaFrontEnd/src/app/core/directives/data-provider.directive';
-import { TabService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/tab.service';
+import { DataProviderDirective } from '../../../../../../NationalBankFrontEnd/src/app/core/directives/data-provider.directive';
+import { TabService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/tab.service';
 import { Subject, Observable, filter, map, startWith, switchMap, mergeMap, debounceTime } from 'rxjs';
 import { FormControl,FormGroup,FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
-import { ApidataService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/apidata.service';
+import { ApidataService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/apidata.service';
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';

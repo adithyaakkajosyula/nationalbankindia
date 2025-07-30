@@ -17,6 +17,8 @@ export class LoginComponent {
   tokenExpirationTime: number = 0; // Holds the expiration time in seconds
   countdownInterval: any; // For the countdown interval
   loading: boolean = false;
+  isLocal : boolean = window.location.hostname === 'localhost';
+  private baseUrl: string = this.isLocal ? 'https://localhost:44306/api/': 'https://nationalbank-api.azurewebsites.net/api/';
   constructor(private http:HttpClient,private router:Router, private jwtservice : JwtAuthenticateService,private sessionExpirationService: SessionExpirationService){
 
   }
@@ -48,7 +50,7 @@ export class LoginComponent {
     if (this.login.valid) {
       this.loading = true; // Set loading to true
       // Proceed with the HTTP request
-      this.http.post('https://localhost:44306/Users/Authenticate', {
+      this.http.post(`${this.baseUrl}Users/Authenticate`, {
         username: this.login.value.username,
         password: this.login.value.password
       }).subscribe(

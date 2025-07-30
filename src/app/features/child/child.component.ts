@@ -10,36 +10,36 @@ import { SharedModule } from 'src/app/core/shared/shared.module';
   imports: [] 
 })
 export class ChildComponent {
-  constructor(private testservice : TestService){}
-    @Input() childdata : string;
+  // constructor(private testservice : TestService){}
+  //   @Input() childdata : string;
 
-    @Input() childdatabyViewChild : string;
+  //   @Input() childdatabyViewChild : string;
 
-    datafromparentbyservice : string;
-    ngOnInit(){
-        this.testservice.currentData.subscribe(a => this.datafromparentbyservice = a)
-    }
+  //   datafromparentbyservice : string;
+  //   ngOnInit(){
+  //       this.testservice.currentData.subscribe(a => this.datafromparentbyservice = a)
+  //   }
 
-    @Output() dataChange: EventEmitter<string> = new EventEmitter();
-    @Output() combinedDataChange = new EventEmitter<string>();
-    changeData() {
-      this.dataChange.emit('Data from child by event emitter');
-    }
+  //   @Output() dataChange: EventEmitter<string> = new EventEmitter();
+  //   @Output() combinedDataChange = new EventEmitter<string>();
+  //   changeData() {
+  //     this.dataChange.emit('Data from child by event emitter');
+  //   }
     
-    senddatatoparentbyviewchild = "data from child by view child";
-    //From CHild To Parent
-    sendData(){
-      this.testservice.changeData('data changed in child component by Service with Observable Pattern');
-    }
-    //From CHild To Parent
-    senddatatoparentfortemplateref = "data by template reference variable directly in template";
-    senddatatoparentfortemplatereferencefromtsbychildreference = "data by template reference variable bychildreference";
-    senddatatoparentfortemplatereferencefromtsbyviewchild = "data by template reference variable byviewchild";
-    sendcombinedtemplatereferenceandeventemitter = "data by combinedtemplatereferenceandeventemitter";
+  //   senddatatoparentbyviewchild = "data from child by view child";
+  //   //From CHild To Parent
+  //   sendData(){
+  //     this.testservice.changeData('data changed in child component by Service with Observable Pattern');
+  //   }
+  //   //From CHild To Parent
+  //   senddatatoparentfortemplateref = "data by template reference variable directly in template";
+  //   senddatatoparentfortemplatereferencefromtsbychildreference = "data by template reference variable bychildreference";
+  //   senddatatoparentfortemplatereferencefromtsbyviewchild = "data by template reference variable byviewchild";
+  //   sendcombinedtemplatereferenceandeventemitter = "data by combinedtemplatereferenceandeventemitter";
     
 
-    changeDataforcombined() {
-      this.sendcombinedtemplatereferenceandeventemitter = 'data modified by combinedtemplatereferenceandeventemitter';
-      this.combinedDataChange.emit(this.sendcombinedtemplatereferenceandeventemitter);
-    }
+  //   changeDataforcombined() {
+  //     this.sendcombinedtemplatereferenceandeventemitter = 'data modified by combinedtemplatereferenceandeventemitter';
+  //     this.combinedDataChange.emit(this.sendcombinedtemplatereferenceandeventemitter);
+  //   }
 }

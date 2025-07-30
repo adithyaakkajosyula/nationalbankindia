@@ -1,9 +1,9 @@
 import { Injectable, Directive, Input } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { TabItem } from '../../../../../AdithyaFrontEnd/src/app/features/admin/tab-item';
-import { ApplicationprofileComponent } from '../../../../../AdithyaFrontEnd/src/app/features/Application/applicationprofile/applicationprofile.component';
-import { ApplicationaddressComponent } from '../../../../../AdithyaFrontEnd/src/app/features/Application/applicationaddress/applicationaddress.component';
-import { ApplicationFinalComponent } from '../../../../../AdithyaFrontEnd/src/app/features/Application/application-final/application-final.component';
+import { TabItem } from '../../../../../NationalBankFrontEnd/src/app/features/admin/tab-item';
+import { ApplicationprofileComponent } from '../../../../../NationalBankFrontEnd/src/app/features/Application/applicationprofile/applicationprofile.component';
+import { ApplicationaddressComponent } from '../../../../../NationalBankFrontEnd/src/app/features/Application/applicationaddress/applicationaddress.component';
+import { ApplicationFinalComponent } from '../../../../../NationalBankFrontEnd/src/app/features/Application/application-final/application-final.component';
 
 
 

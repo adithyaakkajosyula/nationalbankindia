@@ -1,11 +1,11 @@
 
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { DataProviderDirective } from '../../../../../../AdithyaFrontEnd/src/app/core/directives/data-provider.directive';
-import { TabService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/tab.service';
+import { DataProviderDirective } from '../../../../../../NationalBankFrontEnd/src/app/core/directives/data-provider.directive';
+import { TabService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/tab.service';
 import { Subject, Observable, filter, map, startWith, switchMap, mergeMap, debounceTime, distinctUntilChanged, tap, EMPTY, of } from 'rxjs';
 import { FormControl,FormGroup,FormBuilder, Validators, FormArray, ValidatorFn, AbstractControl, ReactiveFormsModule } from '@angular/forms';
-import { ApidataService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/apidata.service';
-import { UtilityService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/utilityservice';
+import { ApidataService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/apidata.service';
+import { UtilityService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/utilityservice';
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { CommonModule } from '@angular/common';
 @Component({

@@ -1,61 +1,39 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Observable, catchError, throwError } from 'rxjs';
+import { Subject, Observable, catchError, throwError, of } from 'rxjs';
 import { ApplicationRegisterModel } from 'src/app/models/applicationRegister';
 @Injectable({
   providedIn: 'root'
 })
 
 export class ApidataService{
-  private baseUrl: string = 'https://localhost:44306/api/';
+   isLocal : boolean = window.location.hostname === 'localhost';
+
+  private baseUrl: string = this.isLocal ? 'https://localhost:44306/api/': 'https://nationalbank-api.azurewebsites.net/api/';
   constructor(private http:HttpClient){};
-   qualificationa = new Observable((observer) => {
-      let users = [
-        {id:"1",qualification:"SSC"},
-        {id:"2",qualification:"Degree"},
-        {id:"3",qualification:"Inter"},
-        {id:"4",qualification:"Occational"},
-        {id:"5",qualification:"PG"}
-      ]
-  
-      observer.next(users); // This method same as resolve() method from Angular 1
-      console.log("am done");
-      observer.complete();//to show we are done with our processing
-      // observer.error(new Error("error message"));
-  
-  });
+   qualificationa = of([
+  {id:"1",qualification:"SSC"},
+  {id:"2",qualification:"Degree"},
+  {id:"3",qualification:"Inter"},
+  {id:"4",qualification:"Occational"},
+  {id:"5",qualification:"PG"}
+]);
 
-  documenttypes = Observable.create((observer :any) => {
-      let documenttypes = [
-        {id:"1",documenttype:"Aadhar"},
-        {id:"2",documenttype:"PAN"},
-        {id:"3",documenttype:"Income"},
-        {id:"4",documenttype:"BankAccount"},
-        {id:"5",documenttype:"Others"}
-      ]
-  
-      observer.next(documenttypes); // This method same as resolve() method from Angular 1
-      console.log("am done");
-      observer.complete();//to show we are done with our processing
-      // observer.error(new Error("error message"));
-  
-  });
+ documenttypes = of([
+  {id:1,documenttype:"Aadhar"},
+  {id:2,documenttype:"PAN"},
+  {id:3,documenttype:"Income"},
+  {id:4,documenttype:"BankAccount"},
+  {id:5,documenttype:"Others"}
+]);
 
-  hobbies = Observable.create((observer :any) => {
-      let hobbitypes = [
-        {id:"1",hobbietype:"Running"},
-        {id:"2",hobbietype:"Walking"},
-        {id:"3",hobbietype:"Reading"},
-        {id:"4",hobbietype:"Watching"},
-        {id:"5",hobbietype:"Playing"}
-      ]
-  
-      observer.next(hobbitypes); // This method same as resolve() method from Angular 1
-      console.log("am done");
-      observer.complete();//to show we are done with our processing
-      // observer.error(new Error("error message"));
-  
-  });
+  hobbies = of([
+  {id:"1",hobbietype:"Running"},
+  {id:"2",hobbietype:"Walking"},
+  {id:"3",hobbietype:"Reading"},
+  {id:"4",hobbietype:"Watching"},
+  {id:"5",hobbietype:"Playing"}
+]);
 
   public getcountries() : Observable<any>{
     return this.http.get<any>(`${this.baseUrl}ApiDataService/countries`);
@@ -70,22 +48,14 @@ public getstates(): Observable<any>{
   return this.http.get<any>(`${this.baseUrl}ApiDataService/districts`);
 };
 
-public getappraisals(){
-  let appraisals = Observable.create((observer :any) => {
-    let appraisaltypes = [
-      {id:"1",name:"adithya"},
-      {id:"2",name:"anji"},
-      {id:"3",name:"hari"},
-      {id:"4",name:"pavan - [1]"}
-    ]
-
-    observer.next(appraisaltypes); // This method same as resolve() method from Angular 1
-    console.log("am done");
-    observer.complete();
-});
-    return appraisals;
+public getappraisals() {
+  return of([
+    {id:"1",name:"adithya"},
+    {id:"2",name:"anji"},
+    {id:"3",name:"hari"},
+    {id:"4",name:"pavan - [1]"}
+  ]);
 }
-
 getApplications(): Observable<ApplicationRegisterModel[]> {
   return this.http.get<ApplicationRegisterModel[]>(`${this.baseUrl}ApplicationRegister/GetApplicationsList`);
 }
@@ -115,6 +85,11 @@ updateApplication(application: ApplicationRegisterModel): Observable<Application
 
 deleteApplication(id: number): Observable<void> {
   return this.http.delete<void>(`${this.baseUrl}/${id}`);
+}
+public viewFile(id: number): Observable<Blob> {
+  return this.http.get(`${this.baseUrl}ApplicationRegister/ViewFile/${id}`, {
+    responseType: 'blob'
+  });
 }
 
 }

@@ -10,8 +10,10 @@ import { BaseResultModel, Userdata } from "../configurations/constants";
 })
 export class JwtAuthenticateService {
   private token: string | null = null;
-  private apiUrl = 'https://localhost:44306/api/Users'; // Base URL
   private userSubject = new BehaviorSubject<Userdata | null>(null); // BehaviorSubject to store the role data
+  isLocal : boolean = window.location.hostname === 'localhost';
+
+  private baseUrl: string = this.isLocal ? 'https://localhost:44306/api/': 'https://nationalbank-api.azurewebsites.net/api/';
   constructor(public jwtHelper: JwtHelperService,private http:HttpClient) {}
   // ...
   public isAuthenticated(): boolean {
@@ -60,7 +62,7 @@ export class JwtAuthenticateService {
         'Authorization': `Bearer ${token}`, // Set the Authorization header
       });
 
-      return this.http.get<Userdata>(`https://localhost:44306/Users/${id}`, { headers });
+      return this.http.get<Userdata>(`${this.baseUrl}Users/${id}`, { headers });
     } else {
       throw new Error('Unable to retrieve ID from token');
     }

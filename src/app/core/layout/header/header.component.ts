@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SidebarComponent } from '../../../../../../AdithyaFrontEnd/src/app/core/layout/sidebar/sidebar.component';
-import { ToggleService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/toggle.service';
+import { SidebarComponent } from '../../../../../../NationalBankFrontEnd/src/app/core/layout/sidebar/sidebar.component';
+import { ToggleService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/toggle.service';
 import { SharedModule } from '../../shared/shared.module';
 import { JwtAuthenticateService } from '../../services/jwt-authenticate.service';
 import { Userdata } from '../../configurations/constants';

@@ -4,7 +4,7 @@ import { LoginComponent } from './core/login/login.component';
 import { HomeComponent } from './features/home/home.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { AppComponent } from './app.component';
-import { AppraisalComponent } from '../../../AdithyaFrontEnd/src/app/features/appraisal/appraisal.component';
+import { AppraisalComponent } from '../../../NationalBankFrontEnd/src/app/features/appraisal/appraisal.component';
 import { TestComponent } from './features/test/test.component';
 import { ParentComponent } from './features/parent/parent.component';
 import { RoutingexampleComponent } from './features/routingexample/routingexample.component';
@@ -19,6 +19,7 @@ import { ApplicationprofileComponent } from './features/Application/applicationp
 import { ApplicationaddressComponent } from './features/Application/applicationaddress/applicationaddress.component';
 import { ApplicationFinalComponent } from './features/Application/application-final/application-final.component';
 import { TemplatedrivenformexampleComponent } from './features/templatedrivenformexample/templatedrivenformexample.component';
+import { DocumentNotFoundComponent } from './features/document-not-found/document-not-found.component';
 
 
 export const routes: Routes = [
@@ -71,10 +72,7 @@ export const routes: Routes = [
       {
         path:'appraisal',
         component:AppraisalComponent,
-        canDeactivate:[canDeactivateGuard],
-        resolve: {
-          countries: resolveGuard, // Use the resolver function for this route
-        }
+        canDeactivate:[canDeactivateGuard]
       },
       {
         path:'test',
@@ -105,7 +103,9 @@ export const routes: Routes = [
       { path: 'not-authorized', component: NotAuthorizedComponent },
     ]
   },
-  
+  {
+    path:'document-not-found',component:DocumentNotFoundComponent
+  },
   { path: '**', redirectTo: 'loginlayout/login' } // Redirect any unknown routes to login
 ];
 

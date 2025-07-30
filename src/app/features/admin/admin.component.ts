@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import{MatTab, MatTabChangeEvent, MatTabsModule} from '@angular/material/tabs';
-import { ApplicationprofileComponent } from '../../../../../AdithyaFrontEnd/src/app/features/Application/applicationprofile/applicationprofile.component';
-import { ApplicationaddressComponent } from '../../../../../AdithyaFrontEnd/src/app/features/Application/applicationaddress/applicationaddress.component';
-import { TabItem } from '../../../../../AdithyaFrontEnd/src/app/features/admin/tab-item';
-import { TabService } from '../../../../../AdithyaFrontEnd/src/app/core/services/tab.service';
-import { ApidataService } from '../../../../../AdithyaFrontEnd/src/app/core/services/apidata.service';
+import { ApplicationprofileComponent } from '../../../../../NationalBankFrontEnd/src/app/features/Application/applicationprofile/applicationprofile.component';
+import { ApplicationaddressComponent } from '../../../../../NationalBankFrontEnd/src/app/features/Application/applicationaddress/applicationaddress.component';
+import { TabItem } from '../../../../../NationalBankFrontEnd/src/app/features/admin/tab-item';
+import { TabService } from '../../../../../NationalBankFrontEnd/src/app/core/services/tab.service';
+import { ApidataService } from '../../../../../NationalBankFrontEnd/src/app/core/services/apidata.service';
 import { FormControl,FormGroup,FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Subject, Observable, filter, map, startWith, switchMap, mergeMap, debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';

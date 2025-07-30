@@ -1,5 +1,5 @@
 import { Component, ElementRef, Output } from '@angular/core';
-import { ToggleService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/toggle.service';
+import { ToggleService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/toggle.service';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -44,37 +44,10 @@ export class SidebarComponent {
         {
           link_name: "Application Add",
           link: "/admin",
-        }, 
-        {
-          link_name: "List",
-          link: "/list",
         }
       ]
-    },
-    {
-      link_name: "TestScreen",
-      link: "/test",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
-    },
-    {
-      link_name: "ParentScreen",
-      link: "/parent",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
-    },
-    {
-      link_name: "RoutingScreen",
-      link: "/routingexample",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
-    },
-    {
-      link_name: "Template driven ",
-      link: "/templatedriven",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
     }
+   
   ]
 status: boolean = false;
 

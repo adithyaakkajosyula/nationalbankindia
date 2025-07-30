@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import swal from 'sweetalert2';
-import { DataProviderDirective } from '../../../../../../AdithyaFrontEnd/src/app/core/directives/data-provider.directive';
-import { TabService } from '../../../../../../AdithyaFrontEnd/src/app/core/services/tab.service';
+import { DataProviderDirective } from '../../../../../../NationalBankFrontEnd/src/app/core/directives/data-provider.directive';
+import { TabService } from '../../../../../../NationalBankFrontEnd/src/app/core/services/tab.service';
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { CommonModule } from '@angular/common';
 
