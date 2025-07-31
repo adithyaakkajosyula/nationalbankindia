@@ -40,11 +40,7 @@ export class SidebarComponent {
         {
           link_name: "Appraisal Add",
           link: "/appraisal",
-        },
-        {
-          link_name: "Application Add",
-          link: "/admin",
-        }
+        }    
       ]
     }
    

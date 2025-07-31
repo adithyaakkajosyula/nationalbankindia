@@ -336,36 +336,48 @@ export class AppraisalComponent implements OnInit,CanComponentDeactivate{
         });
     }
     onDelete(id: number) {
-      this.apidataservice.deleteApplication(id).subscribe({
-        next: (data) => {
-          if (data.isSuccess) {
-            Swal.fire({
-              title: 'Success!',
-              text: data.message,
-              icon: 'success',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              // ✅ Remove the deleted item from the list
-              this.applications = this.applications.filter(item => item.id !== id);
+      Swal.fire({
+        title: 'Do You Want To Delete?',
+        text: '',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.apidataservice.deleteApplication(id).subscribe({
+              next: (data) => {
+                if (data.isSuccess) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  }).then(() => {
+                    // ✅ Remove the deleted item from the list
+                    this.applications = this.applications.filter(item => item.id !== id);
+                  });
+                } else {
+                  Swal.fire({
+                    title: 'Error!',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                  });
+                }
+              },
+              error: (error) => {
+                Swal.fire({
+                  title: 'Error!',
+                  text: error.message,
+                  icon: 'error',
+                  confirmButtonText: 'OK'
+                });
+              }
             });
-          } else {
-            Swal.fire({
-              title: 'Error!',
-              text: data.message,
-              icon: 'error',
-              confirmButtonText: 'OK'
-            });
-          }
-        },
-        error: (error) => {
-          Swal.fire({
-            title: 'Error!',
-            text: error.message,
-            icon: 'error',
-            confirmButtonText: 'OK'
-          });
         }
-      });
+    });
+      
     }
 
 
