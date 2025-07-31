@@ -5,9 +5,7 @@ import { HomeComponent } from './features/home/home.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { AppComponent } from './app.component';
 import { AppraisalComponent } from '../../../NationalBankFrontEnd/src/app/features/appraisal/appraisal.component';
-import { TestComponent } from './features/test/test.component';
 import { ParentComponent } from './features/parent/parent.component';
-import { RoutingexampleComponent } from './features/routingexample/routingexample.component';
 import { ChildComponent } from './features/child/child.component';
 import { AuthGuard, canActivateChildGuard, canDeactivateGuard, resolveGuard, roleGuard, roleGuardForCanLoad } from './core/guards/auth.guard';
 import { LoginlayoutComponent } from './core/loginlayout/loginlayout.component';
@@ -18,7 +16,6 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { ApplicationprofileComponent } from './features/Application/applicationprofile/applicationprofile.component';
 import { ApplicationaddressComponent } from './features/Application/applicationaddress/applicationaddress.component';
 import { ApplicationFinalComponent } from './features/Application/application-final/application-final.component';
-import { TemplatedrivenformexampleComponent } from './features/templatedrivenformexample/templatedrivenformexample.component';
 import { DocumentNotFoundComponent } from './features/document-not-found/document-not-found.component';
 
 
@@ -75,31 +72,8 @@ export const routes: Routes = [
         canDeactivate:[canDeactivateGuard]
       },
       {
-        path:'test',
-        component:TestComponent,
-        canActivate: [roleGuard],
-        data: { role: 'admin' },
-      },
-      {
         path:'parent',component:ParentComponent
       },
-      { 
-        path: 'routingexample', 
-        component: RoutingexampleComponent,         
-        data: { rolerequired: RoleIds.HR }, // Set the required role here
-        canActivateChild:[canActivateChildGuard],
-        children: [
-          { path: 'parent', component: ParentComponent }, 
-          { path: 'child', component: ChildComponent },
-          {
-            path: 'childlazyload',
-            loadComponent: () => import('./features/child/child.component').then(m => m.ChildComponent),
-            canActivate: [AuthGuard],
-             // AuthGuard will protect the lazy-loaded module
-          }  
-        ] 
-      },
-      { path: 'templatedriven', component: TemplatedrivenformexampleComponent },
       { path: 'not-authorized', component: NotAuthorizedComponent },
     ]
   },

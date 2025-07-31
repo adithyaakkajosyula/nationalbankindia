@@ -83,8 +83,8 @@ updateApplication(application: ApplicationRegisterModel): Observable<Application
   return this.http.put<ApplicationRegisterModel>(`${this.baseUrl}/${application.id}`, application);
 }
 
-deleteApplication(id: number): Observable<void> {
-  return this.http.delete<void>(`${this.baseUrl}/${id}`);
+deleteApplication(id: number): Observable<{ isSuccess: boolean, message: string }> {
+  return this.http.put<any>(`${this.baseUrl}ApplicationRegister/Delete/${id}`,{});
 }
 public viewFile(id: number): Observable<Blob> {
   return this.http.get(`${this.baseUrl}ApplicationRegister/ViewFile/${id}`, {
