@@ -27,12 +27,13 @@ export class SidebarComponent {
 
 
   menuSidebar = [
+    // {
+    //   link_name: "Dashboard",
+    //   link: "/dashboard",
+    //   icon: "bx bx-grid-alt",
+    //   sub_menu: []
+    // }, 
     {
-      link_name: "Dashboard",
-      link: "/dashboard",
-      icon: "bx bx-grid-alt",
-      sub_menu: []
-    }, {
       link_name: "Application",
       link: null,
       icon: "bx bx-collection",

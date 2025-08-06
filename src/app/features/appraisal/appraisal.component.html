@@ -34,7 +34,7 @@
                     </div>
                   </div>
                   <div class="row pt-2">
-                    <label class="col-md-2">Choose a date:</label>
+                    <label class="col-md-2">Date Of Birth:</label>
                     <div class="col-md-4">                               
                        <input class="form-control col-md-5" readonly formControlName="applicationdob" matInput [matDatepicker]="applicationdob">
                   
@@ -47,11 +47,11 @@
                   </div>
                   <div class="row pt-2">
                     <label class="col-md-2">Application Gender:</label>
-                    <div class="col-md-5">                               
-                      <label class="col-md-2">
+                    <div class="col-md-6">                               
+                      <label class="col-md-3">
                         <input type="radio" value="M" formControlName="applicationgender"> <span> Male </span>
                       </label>
-                      <label class="col-md-2">
+                      <label class="col-md-3">
                         <input type="radio" value="F" formControlName="applicationgender"> <span> Female </span>
                       </label>
                       <p class="text-danger" *ngIf="appraisaladd.get('applicationgender')?.hasError('required') && (appraisaladd.get('applicationgender')?.touched || appraisaladd.get('applicationgender')?.dirty)">Please Select Gender</p>
@@ -220,7 +220,8 @@
               Appraisal List
           </div>
           <div class="card-body">
-              <table class="table table-bordered">
+            <div class="table-responsive">
+                <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th class="visually-hidden">#</th>
@@ -247,6 +248,8 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+              
           </div>
         </div>
       </form>

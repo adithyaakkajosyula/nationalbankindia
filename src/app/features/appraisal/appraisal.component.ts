@@ -314,27 +314,36 @@ export class AppraisalComponent implements OnInit,CanComponentDeactivate{
         }
       );
     }
-    viewDocument(): void {
-            const id : number = this.appraisaladd.value.id as number;
+   viewDocument(): void {
+  const id: number = this.appraisaladd.value.id as number;
 
-            this.apidataservice.viewFile(id).subscribe({
-          next: (fileBlob) => {
-            const fileURL = URL.createObjectURL(fileBlob);
-            const a = document.createElement('a');
-            a.href = fileURL;
-            a.target = '_blank'; // Opens in new tab
-            a.click();
-            URL.revokeObjectURL(fileURL); // Clean up
-          },
-          error: (err) => {
-            if (err.status === 404) {
-               this.router.navigate(['/document-not-found']);;
-            } else {
-              alert('Error retrieving document.');
-            }
-          }
-        });
+  this.apidataservice.viewFile(id).subscribe({
+    next: (fileBlob : Blob) => {
+      const fileURL = URL.createObjectURL(fileBlob);
+
+      // Open in a new tab
+      const newTab = window.open(fileURL, '_blank');
+
+      if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        alert('Popup blocked. Please allow popups for this site.');
+        return;
+      }
+
+      // Optional: You can revoke the URL after some delay if `onload` doesn't work reliably
+      setTimeout(() => {
+        URL.revokeObjectURL(fileURL);
+      }, 10000); // Give 10 seconds for file to load
+    },
+    error: (err) => {
+      if (err.status === 404) {
+        this.router.navigate(['/document-not-found']);
+      } else {
+        alert('Error retrieving document.');
+      }
     }
+  });
+}
+
     onDelete(id: number) {
       Swal.fire({
         title: 'Do You Want To Delete?',
@@ -355,7 +364,8 @@ export class AppraisalComponent implements OnInit,CanComponentDeactivate{
                     confirmButtonText: 'OK'
                   }).then(() => {
                     // ✅ Remove the deleted item from the list
-                    this.applications = this.applications.filter(item => item.id !== id);
+                    //this.applications = this.applications.filter(item => item.id !== id);
+                    window.location.reload();
                   });
                 } else {
                   Swal.fire({
