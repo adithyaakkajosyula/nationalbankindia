@@ -8,7 +8,6 @@ import { AppraisalComponent } from '../../../NationalBankFrontEnd/src/app/featur
 import { ParentComponent } from './features/parent/parent.component';
 import { ChildComponent } from './features/child/child.component';
 import { AuthGuard, canActivateChildGuard, canDeactivateGuard, resolveGuard, roleGuard, roleGuardForCanLoad } from './core/guards/auth.guard';
-import { LoginlayoutComponent } from './core/loginlayout/loginlayout.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { NotAuthorizedComponent } from './core/not-authorized/not-authorized.component';
 import { RoleIds } from './core/configurations/constants';
@@ -22,15 +21,12 @@ import { DocumentNotFoundComponent } from './features/document-not-found/documen
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'loginlayout/login',
+    redirectTo: '/login',
     pathMatch: 'full', // Redirect empty path to the login page
   },
   {
-    path: 'loginlayout',
-    component: LoginlayoutComponent, // Layout for login
-    children: [
-      { path: 'login', component: LoginComponent }, // Login route
-    ],
+    path: 'login',
+    component: LoginComponent, // Layout for login
   },
   {
     path: '',
@@ -80,7 +76,7 @@ export const routes: Routes = [
   {
     path:'document-not-found',component:DocumentNotFoundComponent
   },
-  { path: '**', redirectTo: 'loginlayout/login' } // Redirect any unknown routes to login
+  { path: '**', redirectTo: '/login' } // Redirect any unknown routes to login
 ];
 
 // @NgModule({

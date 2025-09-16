@@ -45,7 +45,7 @@ export class SessionExpirationService {
                 if (remainingTime <= 0) {
                     clearInterval(this.timer); // Clear the interval
                     this.sessionExpired.next(); // Notify about session expiration
-                    this.router.navigate(['/loginlayout/login']); // Redirect to login layout
+                    this.router.navigate(['/login']); // Redirect to login layout
                 }
             }, 1000); // Run every second
 

@@ -13,7 +13,7 @@ export const AuthGuard: CanActivateFn = () => {
   } else {
     console.log('entered');
     localStorage.setItem('sessionExpiredMessage', 'Your session has expired. Please log in again.');
-    router.navigate(['/loginlayout/login']); // Redirect to login page if not authenticated
+    router.navigate(['/login']); // Redirect to login page if not authenticated
     return false; // Deny access
   }
 };

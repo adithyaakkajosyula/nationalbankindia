@@ -1,47 +1,55 @@
-<div *ngIf="loading" class="loader-overlay">
-    <div class="loader"></div>
-  </div>
-<form action="" [formGroup]="login">
-    <div class="row">
-            <div class="mx-auto" style="width: 400px;" >
-                <div class="col-md-12">
-               <div class="bg-light">
-                <div class="d-flex align-items-center justify-content-evenly bg-black text-bg-success py-3">
-                   <h3 style="color:aqua;font-size:xx-large">LOGIN</h3>
-                </div>
-                <div class="form-group row pt-3">
-                    <div class="d-flex">
-                        <input type="text" class="form-control" formControlName="username" placeholder="Enter User Name">                                                
-                    </div>
-                </div>
-                <span>
-                    <div *ngIf="login.get('username')?.invalid && (login.get('username')?.touched || login.get('username')?.dirty)">
-                        <small *ngIf="login.get('username')?.errors?.required" class="text-danger">Username is required.</small>
-                        <small *ngIf="login.get('username')?.errors?.minlength" class="text-danger">Minimum length is 3 characters.</small>
-                    </div>
-                </span>
-                <div class="form-group row">
-                    <div class="d-flex">
-                        <input type="text" class="form-control" formControlName="password" placeholder="Enter Password">                                            
-                    </div>
-                </div>
-                 <span>
-                    <div *ngIf="login.get('password')?.invalid && (login.get('password')?.touched || login.get('password')?.dirty)">
-                        <small *ngIf="login.get('password')?.errors?.required" class="text-danger">Password is required.</small>
-                        <small *ngIf="login.get('password')?.errors?.minlength" class="text-danger">Minimum length is 6 characters.</small>
-                    </div>
-                 </span>
-                <div class="d-flex align-items-center justify-content-evenly">
-                    <button class="btn btn-primary" [disabled]="loading" (click)="submit()">click</button>                    
-                </div>
-                <div class="d-flex align-items-center justify-content-evenly">
-                    <span class="text-danger">{{errormessage}}</span>                    
-                </div>
-               </div>                   
-                </div>
-
-                <!-- <a asp-action="Create" asp-controller="UserLogin">User Register</a> -->
-            </div>
+<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: rgba(0, 0, 0, 0.3);">
+    <div style="width: 400px;">
+        <div *ngIf="loading" class="loader-overlay">
+            <div class="loader"></div>
         </div>
+        <form action="" [formGroup]="login">
+            <div class="row">
+                    <div class="mx-auto" style="width: 400px;" >
+                        <div class="col-md-12">
+                    <div class="bg-light">
+                        <div class="d-flex align-items-center justify-content-evenly bg-black text-bg-success py-3">
+                        <h3 style="color:aqua;font-size:xx-large">LOGIN</h3>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <div class="d-flex">
+                                <input type="text" class="form-control" formControlName="username" placeholder="Enter User Name">                                                
+                            </div>
+                        </div>
+                        <span>
+                            <div *ngIf="login.get('username')?.invalid && (login.get('username')?.touched || login.get('username')?.dirty)">
+                                <small *ngIf="login.get('username')?.errors?.required" class="text-danger">Username is required.</small>
+                                <small *ngIf="login.get('username')?.errors?.minlength" class="text-danger">Minimum length is 3 characters.</small>
+                            </div>
+                        </span>
+                        <div class="form-group row">
+                            <div class="d-flex">
+                                <input type="text" class="form-control" formControlName="password" placeholder="Enter Password">                                            
+                            </div>
+                        </div>
+                        <span>
+                            <div *ngIf="login.get('password')?.invalid && (login.get('password')?.touched || login.get('password')?.dirty)">
+                                <small *ngIf="login.get('password')?.errors?.required" class="text-danger">Password is required.</small>
+                                <small *ngIf="login.get('password')?.errors?.minlength" class="text-danger">Minimum length is 6 characters.</small>
+                            </div>
+                        </span>
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn btn-primary" [disabled]="loading" (click)="submit()">Login</button>                    
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <span class="text-danger">{{errormessage}}</span>                    
+                        </div>
+                    </div>                   
+                        </div>
 
-</form>           
+                        <!-- <a asp-action="Create" asp-controller="UserLogin">User Register</a> -->
+                    </div>
+                </div>
+
+        </form>  
+    </div>
+</div>
+
+
+
+         

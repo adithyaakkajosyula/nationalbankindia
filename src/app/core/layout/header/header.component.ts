@@ -7,13 +7,14 @@ import { Userdata } from '../../configurations/constants';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { SessionExpirationService } from '../../services/session-expiration.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   standalone: true, // This marks it as a standalone component
-  imports: [CommonModule] // Import SharedModule which includes common modules
+  imports: [CommonModule,RouterModule] // Import SharedModule which includes common modules
 })
 export class HeaderComponent implements OnInit{
   tokenExpirationTime: number = 0;

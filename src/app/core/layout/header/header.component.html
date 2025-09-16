@@ -3,7 +3,7 @@
       <div class="container-fluid">
            <ul class="navbar-nav d-inline-flex">
                <li class="nav-item" style="width:180px">
-                   <a class="navbar-brand" href="#"><img id="logoimage" src="assets/ssmain.jpg" alt="Logo"></a>
+                   <a class="navbar-brand" [routerLink]="['/home']"><img id="logoimage" src="assets/ssmain.jpg" alt="Logo"></a>
                </li>
                <li class="nav-item"> <a id="sidebarbutton"  (click)="sidebartoogle()" class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="bi bi-list toggle-sidebar-btn  h3 align-middle"></i></a> 
               </li>
@@ -30,9 +30,7 @@
                     <i class="bi-person h3 align-middle"></i>
                  </a>
                  <ul class="dropdown-menu size">
-                   <li><a class="dropdown-item" href="#">Action</a></li>
-                   <li><a class="dropdown-item" href="#">Action2</a></li>
-                   <li><a class="dropdown-item" href="#">Action3</a></li>
+                   <li><a class="dropdown-item" [routerLink]="['/login']">Logout</a></li>
                  </ul>
            </div>
 

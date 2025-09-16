@@ -23,7 +23,10 @@ export class LoginComponent {
 
   }
   ngOnInit() {
-    // if the expire time in token is expired, then it redirects to layout in that
+
+      localStorage.removeItem('logintoken');
+
+    // if the expire time in token is expired, then it redirects to login in that
     // time we need to show an error message to user for that at authguard we saved the message in local storege 
     // here we retrieve the message 
     // Check if there is a session expiration message in localStorage
