@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, Observable, catchError, throwError, of } from 'rxjs';
 import { ApplicationRegisterModel } from 'src/app/models/applicationRegister';
+import { ComplaintsModel, PagedResult } from 'src/app/models/complaintsModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -91,5 +92,9 @@ public viewFile(id: number): Observable<Blob> {
     responseType: 'blob'
   });
 }
-
+getComplaints(pageNumber: number, pageSize: number): Observable<any> {
+  return this.http.get<any>(`${this.baseUrl}Complaints/GetComplaints`, {
+    params: { pageNumber, pageSize }
+  });
+}
 }

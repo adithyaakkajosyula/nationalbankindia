@@ -43,6 +43,12 @@ export class SidebarComponent {
           link: "/appraisal",
         }    
       ]
+    },
+    {
+      link_name: "Complaints",
+      link:"/complaints",
+      icon:"bx bx-collection",
+      sub_menu: []
     }
    
   ]

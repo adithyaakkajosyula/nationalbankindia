@@ -1,0 +1,31 @@
+<div
+  class="table-responsive complaints-container"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="150"
+  (scrolled)="onScroll()"
+>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of complaints">
+        <td>{{ c.category }}</td>
+        <td>{{ c.status }}</td>
+        <td>{{ c.description }}</td>
+        <td>{{ c.date | date:'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isLoading" class="text-center my-2">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </div>
+</div>

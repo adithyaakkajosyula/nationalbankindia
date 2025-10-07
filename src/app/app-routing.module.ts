@@ -16,6 +16,7 @@ import { ApplicationprofileComponent } from './features/Application/applicationp
 import { ApplicationaddressComponent } from './features/Application/applicationaddress/applicationaddress.component';
 import { ApplicationFinalComponent } from './features/Application/application-final/application-final.component';
 import { DocumentNotFoundComponent } from './features/document-not-found/document-not-found.component';
+import { ComplaintsComponent } from './features/complaints/complaints.component';
 
 
 export const routes: Routes = [
@@ -70,9 +71,13 @@ export const routes: Routes = [
       {
         path:'parent',component:ParentComponent
       },
+      {
+    path:'complaints',component:ComplaintsComponent
+  },
       { path: 'not-authorized', component: NotAuthorizedComponent },
     ]
   },
+  
   {
     path:'document-not-found',component:DocumentNotFoundComponent
   },
